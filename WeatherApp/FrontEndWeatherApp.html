@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Local Weather</title>
+<link rel=stylesheet type="text/css" href="weather.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="weather.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="text-primary">Your Local Weather</h1>
+      <h2 id = "location">City, State</h2>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+          <p><u>Temperature</u></p>
+          <p id="temp">X</p>
+        </div>
+        <div class="col-sm-3">
+          <p><u>Wind Speed</u></p>
+          <p id="wind">X</p>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+          <p><u>Weather</u></p>
+          <p id="weather">X</p>
+        </div>
+        <div class="col-sm-3">
+          <img id = "weather_image"  alt="Weather Image" style="width:42px;height:42px;border:0">
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+
+      <div>
+        <p id="ErrorGeoloc"></p>
+      </div>
+      <div id ="location"></div>
+      <div id="weather"></div>
+      <button class="btn btn-primary">Convert Celcius</button>
+
+    </div>
+  </div>
+
+</body>

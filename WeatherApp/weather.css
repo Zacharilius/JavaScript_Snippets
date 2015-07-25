@@ -1,0 +1,8 @@
+body{
+  background-image: url("http://forwardfocus.com.au/wp-content/uploads/Clouds.jpg");
+  background-color: lightblue;
+  text-align: center;
+}
+.jumbotron{
+  opacity: .85;
+}
