@@ -1,0 +1,12 @@
+body {
+  background-color: lightblue;
+  text-align: center;
+}
+.fancy-font{
+  font-family: monospace;
+}
+.col-width {
+    float: left;
+    width: 20%;
+    padding-right: 1%;
+}
