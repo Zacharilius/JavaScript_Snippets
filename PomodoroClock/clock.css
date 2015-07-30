@@ -1,0 +1,20 @@
+body {
+  text-align: center;
+  background-color: #96C950;
+  color: white;
+}
+.container{
+  margin-top: 10%;
+}
+.clock-shell{
+  background-color: white;
+  border-radius: 25px;
+  color: black;
+  opacity: .8;
+}
+.clock-digits{
+  font-size: 30px;
+
+}
+.clock{
+}

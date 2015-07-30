@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Coding Pomodoro Timer</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel=stylesheet type="text/css" href="clock.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="clock.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6 clock-shell">
+        <h1>Coding Timer</h1>
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>Work</h3>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">
+                <h3 id="coding-time">25:00</h1>
+              </div>
+              <div class="col-sm-3">
+                <button id="coding-time-up" type="button" class="btn btn-default up-down" aria-label="Left Align">
+                  <span class="glyphicon glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                </button>
+
+                <button id="coding-time-down" type="button" class="btn btn-default up-down" aria-label="Left Align">
+                  <span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <h3>Break</h3>
+                <div class="row">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-3">
+                    <h3 id="break-time">5:00</h1>
+              </div>
+              <div class="col-sm-3">
+                <button id="break-time-up" type="button" class="btn btn-default up-down" aria-label="Left Align">
+                  <span class="glyphicon glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                </button>
+
+                <button id="break-time-down" type="button" class="btn btn-default up-down" aria-label="Left Align">
+                  <span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+            </div>
+            <h2>Time Remaining</h2>
+            <div class="row">
+            <h2 class="clock-digits" id="clock">25:00</h2>
+            <button id="start-timer" type="button" class="btn btn-default" aria-label="Left Align">
+              <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+            </button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
