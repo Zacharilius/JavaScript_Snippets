@@ -3,8 +3,14 @@ body {
   color: white;
 }
 .cont{
-  margin: 15%;
+  /*width: margin: 15%;*/
 }
 .center{
   text-align: center;
+
+}
+.search-window{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,4 +1,42 @@
 $(document).ready(function(){
+var timer;
+
+function myTimer() {
+    console.log("oh yeah");
+    //Get html value of clock;
+    var time = $("#clock").text();
+    var timeArr = time.split(":");
+    var minute = Number(timeArr[0]);
+    var second = Number(timeArr[1]);
+
+    console.log("minute: " + minute);
+    console.log("second: " + second);
+    //Decrement 1 second
+
+    if(second > 0){
+      second--;
+    }
+    //Update time
+    else if(second <= 0 && minute > 0){
+      second = 59;
+      minute--;
+    }
+    else{
+      console.log("Executing else");
+      var codingTime = $('#coding-time').text();
+      $("#clock").text(codingTime);
+      window.clearTimeout(timer);
+    }
+    if(second < 10){
+      second = "0" + second;
+    }
+    if(minute < 10){
+      minute = "0" + minute;
+    }
+    $("#clock").text(minute + ":" + second);
+    //console.log(d.toLocaleTimeString());
+}
+
   // Disable function
   jQuery.fn.extend({
       disable: function(state) {
@@ -15,15 +53,17 @@ $(document).ready(function(){
 
   $('#start-timer').click(function(){
     //Prevent clicking up and down
-    console.log("start-timer ran");
     $("button.up-down").disable(true);
 
     //Start coding timer
+    timer = setInterval(function(){myTimer()},1000);
 
 
     //When coding timer finishes
-  })
 
+
+
+  })
 
   $('#coding-time-up').click(function(){
     var codingTime = $('#coding-time').text();
