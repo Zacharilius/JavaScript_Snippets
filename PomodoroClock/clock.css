@@ -11,6 +11,7 @@ body {
   border-radius: 25px;
   color: black;
   opacity: .8;
+  padding: 25px;
 }
 .clock-digits{
   font-size: 30px;

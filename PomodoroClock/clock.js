@@ -1,19 +1,30 @@
 $(document).ready(function(){
+  // Disable function
+  jQuery.fn.extend({
+      disable: function(state) {
+          return this.each(function() {
+              this.disabled = state;
+          });
+      }
+  });
+  // Disabled with:
+  //$('input[type="submit"], input[type="button"], button').disable(true);
+
+  // Enabled with:
+  //$('input[type="submit"], input[type="button"], button').disable(false);
+
   $('#start-timer').click(function(){
     //Prevent clicking up and down
-    $("up-down").each(function(){
-      (this).disable();
-    });
+    console.log("start-timer ran");
+    $("button.up-down").disable(true);
 
     //Start coding timer
-    
+
 
     //When coding timer finishes
   })
-  function startTime(timer){
-    #change
 
-  };
+
   $('#coding-time-up').click(function(){
     var codingTime = $('#coding-time').text();
     var codingTimeNumb = codingTime.split(":");
