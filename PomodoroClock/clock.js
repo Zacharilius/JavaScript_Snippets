@@ -1,9 +1,19 @@
 $(document).ready(function(){
 var timer;
+var is_play = true;
 
-function myTimer() {
-    console.log("oh yeah");
+// Disable function
+jQuery.fn.extend({
+    disable: function(state) {
+        return this.each(function() {
+            this.disabled = state;
+        });
+    }
+});
+function myTimer(htmlElement) {
+    console.log("Starting");
     //Get html value of clock;
+    var cont = true;
     var time = $("#clock").text();
     var timeArr = time.split(":");
     var minute = Number(timeArr[0]);
@@ -22,29 +32,41 @@ function myTimer() {
       minute--;
     }
     else{
+      //Executed when coding time is completed
       console.log("Executing else");
-      var codingTime = $('#coding-time').text();
-      $("#clock").text(codingTime);
-      window.clearTimeout(timer);
+      cont = false;
+      if(htmlElement === "#coding-time"){
+        var codingTime = $("#break-time").text();
+        console.log("Wooooo\n\n\n" + codingTime);
+        $("#clock").text(codingTime);
+        window.clearTimeout(timer);
+        timer = setInterval(function(){myTimer("#break-time")},1000)
+      }
+      else{
+        //Executed the second time the clock runs. IE when break-time is passed inside. The timer then is killed.
+        console.log("Killing timer");
+        $("button.up-down").disable(false);
+        $("#play-stop-button").attr('class', 'glyphicon glyphicon-play');
+        window.clearTimeout(timer);
+      }
+
+
+
     }
-    if(second < 10){
-      second = "0" + second;
+    if(cont){
+      if(second < 10){
+        second = "0" + second;
+      }
+      if(minute < 10){
+        minute = "0" + minute;
+      }
+      $("#clock").text(minute + ":" + second);
     }
-    if(minute < 10){
-      minute = "0" + minute;
-    }
-    $("#clock").text(minute + ":" + second);
+
     //console.log(d.toLocaleTimeString());
 }
 
-  // Disable function
-  jQuery.fn.extend({
-      disable: function(state) {
-          return this.each(function() {
-              this.disabled = state;
-          });
-      }
-  });
+
   // Disabled with:
   //$('input[type="submit"], input[type="button"], button').disable(true);
 
@@ -52,17 +74,33 @@ function myTimer() {
   //$('input[type="submit"], input[type="button"], button').disable(false);
 
   $('#start-timer').click(function(){
-    //Prevent clicking up and down
-    $("button.up-down").disable(true);
+    if(is_play){
+      is_play = false;
+      //Prevent clicking up-down class of buttons
+      $("button.up-down").disable(true);
 
-    //Start coding timer
-    timer = setInterval(function(){myTimer()},1000);
+      //Switch play button to stop botton.
+      $("#play-stop-button").attr('class', 'glyphicon glyphicon-stop');
 
+      //Start coding timer
+      timer = setInterval(function(){myTimer("#coding-time")},1000);
+    }
+    else{
+      is_play = true;
+      //Allows clicking up-down class of buttons
+      $("button.up-down").disable(false);
 
-    //When coding timer finishes
+      //Switch play button to play botton.
+      $("#play-stop-button").attr('class', 'glyphicon glyphicon-play');
 
+      //Stops the timer;
+      window.clearTimeout(timer);
 
+      //Reset clock to the coding-time set by the user
+      var codingTime = $("#coding-time").text();
+      $("#clock").text(codingTime);
 
+    }
   })
 
   $('#coding-time-up').click(function(){
