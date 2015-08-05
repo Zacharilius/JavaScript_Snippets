@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+  <title>FCC Twitch API Demo</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel=stylesheet type="text/css" href="twitchApp.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="TwitchAPIApp" ng-controller="twitchController">
+<div class="container"
+ <div class="row">
+   <div class="col-sm-4"></div>
+   <div class="col-sm-4 ">
+     <div class="header box_app">
+       <div class="row">
+         <h2>Free Code Camp</h2>
+         <h4>TwitchTV Activity</h4>
+       </div>
+     </div>
+     <div class="body_app">
+       <div class="row search">
+         <div class="col-sm-3 search"></div>
+         <div class="col-sm-6 search">
+           <input type="text" ng-model="nameFilter" class="form-control search" placeholder="Search for...">
+         </div>
+         <div class="col-sm-3 search"></div>
+       </div>
+       <hr class="divider">
+       <div id="usernames" >
+         <div class="row userProfiles" ng-repeat="username in onlineUsernameList | filter: searchFilter">
+           <a href={{username.channelURL}}>
+           <div class="col-sm-3"><img class="logo" src= {{username.logo}}></div>
+           <div class="col-sm-6">
+             <p>{{username.display_name}}</p>
+             <p>{{username.status}}</p>
+           </div>
+           <div class="col-sm-3"><span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true"></span> Online</div>
+         </a>
+         </div>
+         <div class="row userProfiles loggedOut" ng-repeat="username in offlineUsernameList | filter: searchFilter">
+           <div class="col-sm-3"><img class="logo" src= {{username.logo}}></div>
+           <div class="col-sm-6">{{username.display_name}}</div>
+           <div class="col-sm-3"><span class="glyphicon glyphicon-remove	" style="color:red" aria-hidden="true"></span> Offline</div>
+         </div>
+       </div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

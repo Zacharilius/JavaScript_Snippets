@@ -14,7 +14,7 @@ $(document).ready(function(){
     //addUsernamesWebsite();
 
   }
-
+  $(".search").
   function getAllUsernames(username){
     var usernames = ["freecodecamp", "storbeck", "terakilobyte", "habathcx",
     "RobotCaleb", "comster404","brunofin","thomasballinger","noobs2ninjas",
