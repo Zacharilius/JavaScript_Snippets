@@ -10,26 +10,26 @@ $(document).ready(function(){
 
     $.ajax({
         type: "GET",
-        url: "http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch="+ query.split(" ").join("_") + "&callback=?",
-//    url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + query.split(" ").join("_") + "&callback=?",
-        //contentType: "application/json; charset=utf-8",
-        //async: false,
-        //dataType: "json",
+        url: 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=' + query.split(" ").join("%20") + '&callback=JSON_CALLBACK',
+        contentType: "application/json; charset=utf-8",
+        dataType: "jsonp",
         success: function (parsed_json, textStatus, jqXHR) {
-          var wiki_html = parsed_json.parse.text['*'];
-          var wiki_div = $('<div></div>').html(wiki_html);
-          wiki_div.find('a').each(function(){
-            $(this).replaceWith($(this).html());
-          });
-          wiki_div.find('img').each(function(){
-            $(this).replaceWith($(this).html());
-          });
-          wiki_div.find('sup').remove();
-          wiki_div.find('.mw-ext-cite-error').remove();
+          $('#search-results').empty();
+          console.log(parsed_json);
+          var pages = parsed_json.query.pages;
+          for(page in pages){
+            var title = pages[page].title;
+            var extract = pages[page].extract;
+            var pageid = pages[page].pageid;
+            $('#search-results').append("<a href = http://en.wikipedia.org/?curid="+ pageid + "><div><p><b>" + title + ": </b>" + extract + "</p></br></div></a>");
 
-          $('#search-results').html($(wiki_div).find('p'));
+          };
         },
+
         error: function (errorMessage) {
+          $('#search-results').empty();
+          $('#search-results').html('<p>Error with your request</p>');
+
           console.log("ERROR: " + errorMessage);
         }
     });
